@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-success mb-4">Favorite Contacts</h2>
+
+{% if favorites %}
+<table class="table table-bordered table-striped shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in favorites %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.message }}</td>
+            <td>
+                <a href="/toggle-favorite/{{ c.id }}" class="btn btn-warning btn-sm">
+                    {% if c in user_favorites %}Remove Favorite{% else %}Add Favorite{% endif %}
+                </a>
+                <a href="/edit/{{ c.id }}" class="btn btn-info btn-sm">Edit</a>
+                <a href="/delete/{{ c.id }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="text-center text-muted">No favorite contacts found.</p>
+{% endif %}
+
+<a href="/show" class="btn btn-primary mt-3">Back to All Contacts</a>
+
+{% endblock %}

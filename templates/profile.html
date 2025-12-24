@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">My Profile</h2>
+    
+        <div class="card shadow p-4">
+
+            <img src="/static/uploads/{{ user.profile_images }}"  class="rounded-circle mb-3"   width="150" height="150">
+
+
+
+
+
+            <h4>Name : {{ user.name }}</h4>
+            <h5 class="text-muted">{{ user.email }}</h5>
+        </div>
+
+        <a href="/edit-profile" class="btn btn-warning mt-3">Edit Profile</a>
+
+        <a href="/change-password" class="btn btn-warning mt-3">Change Password</a>
+
+        <a href="/change-image" class="btn btn-info mt-3">Change Profile Photo</a>
+
+
+
+    
+</div>
+
+{% endblock %}

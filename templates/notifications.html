@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-3">My Notifications</h2>
+
+    {% if notes %}
+        {% for n in notes %}
+            <div class="alert {% if not n.is_read %}alert-info{% else %}alert-light{% endif %}">
+                <p class="mb-1">{{ n.message }}</p>
+                <small class="text-muted">
+                    {{ n.created_at.strftime("%d-%m-%Y %I:%M %p") }}
+                </small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning text-center">
+            No Notifications Found
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-danger mb-3">Failed Login Attempts</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>IP Address</th>
+            <th>Browser</th>
+            <th>Device</th>
+            <th>OS</th>
+            <th>Time</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in attempts %}
+        <tr>
+            <td>{{ f.id }}</td>
+            <td>{{ f.email }}</td>
+            <td>{{ f.ip_address }}</td>
+            <td>{{ f.browser }}</td>
+            <td>{{ f.device }}</td>
+            <td>{{ f.os }}</td>
+            <td>{{ f.timestamp }}</td>
+            <td>
+                <a href="{{ url_for('block_ip', ip=f.ip_address) }}" class="btn btn-danger btn-sm">Block IP</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

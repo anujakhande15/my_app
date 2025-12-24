@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mt-4 mb-3">User Login History Page </h2>
+
+<form method="GET" class="d-flex gap-3 mb-3">
+    <select name="browser" class="form-control">
+        <option value="">All Browser</option>
+        <option value="Chrome">Chrome</option>
+        <option value="Firefox">Firefox</option>
+        <option value="Edge">Edge</option>
+    </select>
+
+    <select name="device" class="form-control">
+        <option value="">All Device</option>
+        <option value="Mobile">Mobile</option>
+        <option value="Desktop">Desktop</option>
+    </select>
+
+    <select name="os" class="form-control">
+        <option value="">All OS</option>
+        <option value="Windows">Windows</option>
+        <option value="Android">Android</option>
+        <option value="iOS">iOS</option>
+        <option value="Linux">Linux</option>
+    </select>
+
+    <button class="btn bth-primary">Apply Filter</button>
+
+
+</form>
+
+
+
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Device</th>
+            <th>OS</th>
+            <th>Browser</th>
+            <th>IP Adderss</th>
+            <th>Login Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for h in history %}
+        <tr>
+            <td>{{ h.id }}</td>
+            <td>{{ h.user.username }}</td>
+            <th>{{ h.device }}</th>
+            <th>{{ h.os }}</th>
+            <th>{{ h.browser }}</th>
+            <th>{{ h.ip }}</th>
+            <th>{{ h.login_time }}</th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

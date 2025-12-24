@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-primary">Edited Contact History</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Old Name</th>
+        <th>Old Email</th>
+        <th>Old Message</th>
+        <th>Edited At</th>
+        <th>Action</th>
+    </tr>
+    {% for h in history %}
+    <tr>
+        <td>{{ h.old_name }}</td>
+        <td>{{ h.old_email }}</td>
+        <td>{{ h.old_message }}</td>
+        <td>{{ h.edited_at }}</td>
+        <td>
+            <a href="/admin/restore-contact/{{ h.id }}" class="btn btn-sm btn-warning">Restore</a>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

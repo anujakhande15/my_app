@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">Admin DashBoard</h2>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card shadow p-3 bg-info text-white text-center">
+            <h3>Total User</h3>
+            <h1>{{ total_users}}</h1>
+        </div>
+    </div>
+
+<div class="col-md-5">
+    <div class="card shadow p-3 bg-success text-white text-center">
+        <h3>Total Contacts</h3>
+        <h1>{{ total_contacts }}</h1>
+
+    </div>
+</div>
+
+
+<div class="col-md-5">
+    <div class="card shadow p-3 bg-dark text-white text-center">
+        <h3>Logged In</h3>
+        <h1>{{ logged_user.username }}</h1>
+    </div>
+</div>
+
+<div class="col-md-5 mt-4">
+    <div class="card shadow p-3 bg-primary text-white text-center">
+        <h3>Active Users</h3>
+        <h1>{{ active_users }}</h1>
+    </div>
+</div>
+
+<div class="col-md-s mt-4">
+    <div class="card shadow p-3 bg-danger text-white text-center">
+        <h3>Blocked Users</h3>
+        <h1>{{ blocked_users }}</h1>
+    </div>
+</div>
+
+
+<div class="col-md-5 mt-4">
+    <div class="card shadow p-3 bg-warning text-white text-center">
+        <h3>Today's Logins</h3>
+        <h1>{{ todays_logins }}</h1>
+    </div>
+</div>
+
+<br>
+
+<a href="/show" class="btn btn-primary">View Data</a>
+<a href="/" class="btn btn-secondary">Home</a>
+
+
+<a href="/manage-users" class="btn btn-warning mt-3">Manage Users</a>
+<a href="/manage-contacts" class="btn btn-danger mt-3">Manage Contact Messages</a>
+
+<a href="/admin/login-history" class="btn btn-dark mt-3">View Login History</a>
+
+
+
+
+       
+
+{% endblock %}

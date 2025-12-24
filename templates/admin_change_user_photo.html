@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="containr mt-4">
+    <h2>Change Profile Photo for {{ user.username }}</h2>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        <label>Select New Photo:</label>
+        <input type="file" name="photo" class="form-control" required>
+
+        <button class="btn btn-primary mt-3">Upload</button>
+
+    </form>
+</div>
+
+{% endblock %}

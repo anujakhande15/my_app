@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="text-cenetr text-success mb-4">Edit profile</h2>
+
+    <form method="POST"   enctype="multipart/form-data"       class="p-4 bg-white shadow rounded">
+
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" value="{{ user.name }}" class="form-control" required>
+        </div>
+
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" value="{{ user.email }}" class="form-control" required>
+        </div>
+
+
+        <div class="mb-3">
+            <label>Profile Image</label><br>
+            <img src="/static/uploads/{{ user.profile_images }}" width="100" class="mb-2">
+            <input type="file" name="profile_image" class="form-control">
+        </div>
+
+        <button class="btn btn-success">Update Profile</button>
+        <a href="/profile" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}
+

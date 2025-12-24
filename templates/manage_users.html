@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-success mb-3">Manage Users</h2>
+<table class="table table-bordered table-text">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Last Login</th>
+            <th>IP Address</th>
+            <th>Device</th>
+            <th>OS</th>
+            <th>Browser</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in users %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.role }}</td>
+            <td>{{ u.status }}</td>
+                        <td>
+                {% if u.is_verified %}
+                    ✅ Verified
+                {% else %}
+                    ❌ Not Verified
+                {% endif %}
+            </td>
+
+
+
+
+            <td>{{ u.last_login }}</td>
+            <td>{{ u.last_login_ip }}</td>
+            <td>{{ u.device }}</td>
+            <td>{{ u.os }}</td>
+            <td>{{ u.browser }}</td>
+
+
+
+
+            <td>
+                {% if u.role != 'admin' %}
+                    <a href="/edit-user/{{ u.id }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/delete-user/{{ u.id }}" class="btn btn-danger btn-sm">Delete</a>
+
+                    {% if u.status == 'active' %}
+                        <a href="/block-user/{{ u.id }}" class="btn btn-danger btn-sm mt-1">Block</a>
+                    {% else %}
+                        <a href="/unblock-user/{{ u.id }}" class="btn btn-success btn-sm mt-1">Unblock</a>
+                    {% endif %}
+
+                    <a href="/admin/change-user-photo/{{ u.id }}" class="btn btn-info btn-sm mt-1">
+                        Change Photo
+                    </a>
+
+                    <a href="/admin/delete-user-photo/{{ u.id }}" class="btn btn-danger btn-sm">Delete Photo</a>
+
+                    <a href="/admin/reset-password/{{ u.id }}" class="btn btn-warning btn-sm mt-1">Reset Password</a>
+
+                    <a href="/user-login-history/{{ u.id }}" class="btn btn-info btn-sm">View Logs</a>
+
+
+
+
+
+
+
+                {% else %}
+                    <span class="text-muted">Admin</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-success mb-4">All Contacts</h2>
+<form method="GET" action="/show" class="d-flex mb-3">
+    <input type="text" name="query" class="form-control me-2" placeholder="Search by name or email">
+    <button class="btn btn-primary"  href="/">Search</button>
+</form>
+
+<table class="table table-bordered table-striped shadow">
+    <thead class="table-dark">
+        
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in contacts %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.message }}</td>
+            <td>
+                <a href="/edit/{{ c.id }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/delete/{{ c.id }}" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/" class="btn btn-primary">Add New</a>
+
+
+{% endblock %}

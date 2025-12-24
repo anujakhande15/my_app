@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center">Blocked IP Addresses</h2>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>IP Address</th>
+            <th>Reason</th>
+            <th>Time</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in ips %}
+        <tr>
+            <td>{{ b.id }}</td>
+            <td>{{ b.ip_address }}</td>
+            <td>{{ b.reason or 'N/A' }}</td>
+            <td>{{ b.timestamp }}</td>
+            <td>
+                <a href="{{ url_for('unblock_ip', id=b.id) }}" class="btn btn-success btn-sm">Unblock</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/dashboard" class="btn btn-primary">Back to Dashboard</a>
+
+{% endblock %}

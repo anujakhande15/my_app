@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="text-center text-danger mb-4">Suspicious Login Heatmap</h2>
+    {% if data|lenth == 0 %}
+       <div class="alert alert-info text-center">Not Login Heatmap Found</div>
+    {% else %}
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Hour</th>
+                    <th>IP Address</th>
+                    <th>Device</th>
+                    <th>Browser</th>
+                    <th>Attempts</th>
+                    <th>Rick Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

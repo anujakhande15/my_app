@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-4">Active User Session</h2>
+    {% if sessions %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped shadow">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>User</th>
+                    <th>IP Address</th>
+                    <th>Device</th>
+                    <th>Browser</th>
+                    <th>Login Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in sessions %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ s.username }}</td>
+                    <td>{{ s.ip_address }}</td>
+                    <td>{{ s.device }}</td>
+                    <td>{{ s.browser }}</td>
+                    <td>{{ s.login_time }}</td>
+                    <td>
+                        <a href="/admin/force-logout/{{ s.id }}" class="btn btn-sm btn-danger" onclick="return confirm('Force Logout this User?')">Force Logout</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+         <div class="alert alert-info text-center">No Active Session Found</div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

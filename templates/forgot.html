@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">Forget Password</h2>
+
+<form method="POST" action="/send_otp" class="p-4 bg-white shadow rounded">
+    <div class="mb-3">
+        <label>Email</label>
+        <input type="email" name="email" class="form-control" required>
+    </div>
+
+    <button class="btn btn-primary w-100">Send Reset Email</button>
+</form>
+
+{% endblock %}
